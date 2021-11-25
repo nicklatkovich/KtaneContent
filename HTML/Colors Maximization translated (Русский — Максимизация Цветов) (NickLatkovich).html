@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>Максимизация Цветов — Keep Talking and Nobody Explodes Module</title>
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/font-cyrillic.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-03">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Максимизация Цветов</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/Colors Maximization.svg" class="diagram" />
+                <h2>О Максимизации Цветов</h2>
+                <p class="flavour-text">Не можешь решить математически? Просто посчитай все возможные комбинации, их немного, честно...</p>
+                <p>Модуль содержит 20 цветных кнопок и кнопку с надписью "SUBMIT".</p>
+                <p>Каждая кнопка имеет основной цвет, который может быть одним из следующих: красный, зеленый, синий, пурпурный, желтый, белый.</p>
+                <p>
+                    Каждая кнопка может быть в двух состояниях: активном и неактивном. Если кнопка активна, то она окрашена в свой основной цвет.
+                    Если кнопка не активна, то она окрашена в черный.
+                </p>
+                <p>
+                    При нажатии на активную кнопку все кнопки с таким же основным цветом станут неактивными.
+                    При нажатии на неактивную кнопку все кнопки с таким же основным цветом станут активными.
+                </p>
+                <p>
+                    Каждому цвету соответствует количество очков. Любые две кнопки, у которых разница в количестве очков равна единице не должны быть активны одновременно.*
+                    Чтобы решить модуль активируйте такие кнопки, у которых сумма очков будет максимально возможной, и нажмите "SUBMIT".
+                    Отправка неверного количества очков приведет к ошибке.
+                </p>
+                <p>Используйте таблицу для определения количества очков, соответствующее цветам. Используйте самое верхнее правило, для которого условие выполняется.</p>
+                <table style="font-size: 15px;">
+                    <tr>
+                        <th>Условие</th>
+                        <th>Красный</th>
+                        <th>Зеленый</th>
+                        <th>Синий</th>
+                        <th>Пурпурный</th>
+                        <th>Желтый</th>
+                        <th>Белый</th>
+                    </tr>
+                    <tr>
+                        <th>Ровно 4 элементов питания</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <th>Ровно 2 негорящих индикатора</th>
+                        <th>2</th>
+                        <th>1</th>
+                        <th>5</th>
+                        <th>4</th>
+                        <th>3</th>
+                        <th>6</th>
+                    </tr>
+                    <tr>
+                        <th>Ровно две четные цифры в серийном номере</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>2</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>1</th>
+                    </tr>
+                    <tr>
+                        <th>Последовательный порт отсутствует</th>
+                        <th>4</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>1</th>
+                        <th>6</th>
+                        <th>5</th>
+                    </tr>
+                    <tr>
+                        <th>Минимум один двухфакторый код делится на 3 или на 5</th>
+                        <th>5</th>
+                        <th>4</th>
+                        <th>6</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                    </tr>
+                    <tr>
+                        <th>Ни одно из условий выше не выполняется</th>
+                        <th>6</th>
+                        <th>5</th>
+                        <th>4</th>
+                        <th>3</th>
+                        <th>2</th>
+                        <th>1</th>
+                    </tr>
+                </table>
+                <p>*Если это правило нарушено, но суммарное количество очков верное, модуль будет решен.</p>
+            </div>
+            <div class="page-footer relative-footer">Стр. 1 из 1</div>
+        </div>
+    </div>
+</body>
+</html>
