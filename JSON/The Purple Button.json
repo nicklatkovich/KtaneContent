@@ -9,16 +9,14 @@
   "Description": "Identify which pieces of edgework give rise to a sequence and turn the bulb on and off accordingly. Tags: purple-button, bulb, screen, digit",
   "ExpertDifficulty": "Medium",
   "ModuleID": "PurpleButtonModule",
+  "MysteryModule": "MustNotBeHidden",
   "Name": "The Purple Button",
   "Origin": "Mods",
   "Published": "2021-09-09",
   "RuleSeedSupport": "Supported",
   "SortKey": "PURPLEBUTTON",
   "SourceUrl": "https://github.com/JakkOfKlubs/KtaneBundleOfABunchOfButtons",
-  "Souvenir": {
-    "Explanation": "Which digits required the light to be on/off?",
-    "Status": "Considered"
-  },
+  "Souvenir": { "Status": "Supported" },
   "SteamID": "2597569498",
   "Symbol": "Pbtn",
   "TutorialVideoUrl": { "default": "https://youtu.be/e8t_mDTu2VE" },
