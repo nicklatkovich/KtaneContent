@@ -9410,6 +9410,166 @@ const parseData = [
         ]
     },
     {
+        displayName: "Understand",
+        moduleID: "understand",
+        loggingTag: "Understand",
+        matches: [{
+            regex: /Rule #1/,
+            handler: function (matches, module) {
+                let rulesCount = 0;
+                while (true) {
+                    const line = readLine();
+                    rulesCount += 1;
+                    if (!/Rule #\d/.test(line)) break;
+                }
+				const ld = module.logsData = { rulesCount, state: "grid" };
+				module.methods = {
+					renderStage: () => {
+						for (let x = 0; x < 7; x++) for (let y = 0; y < 7; y++) ld.cells[x][y].text(ld.maps[ld.currentStage][x][y]);
+						ld.stageTextDiv.text(`Stage #${ld.currentStage + 1}`);
+					},
+					onNextPressed: () => {
+						if (ld.currentStage >= 6) return;
+						ld.currentStage += 1;
+						module.methods.renderStage();
+						if (ld.currentStage >= 6) ld.nextStageButton.attr("disabled", "disabled").css("cursor", "default");
+						ld.prevStageButton.removeAttr("disabled").css("cursor", "pointer");
+						if (ld.state === "solution") module.methods.renderSolution();
+					},
+					onPrevPressed: () => {
+						if (ld.currentStage <= 0) return;
+						ld.currentStage -= 1;
+						module.methods.renderStage();
+						if (ld.currentStage <= 0) ld.prevStageButton.attr("disabled", "disabled").css("cursor", "default");
+						ld.nextStageButton.removeAttr("disabled").css("cursor", "pointer");
+						if (ld.state === "solution") module.methods.renderSolution();
+					},
+					clearPath: () => {
+						for (let x = 0; x < 7; x++) {
+							for (let y = 0; y < 7; y++) {
+								ld.backCells[x][y].css("background-color", "transparent");
+								if (x >= 6 || y >= 6) continue;
+								ld.pathCells[x][y].css("border-color", "transparent");
+							}
+						}
+					},
+					renderSolution: () => {
+						module.methods.clearPath();
+						const solution = ld.solutions[ld.currentStage];
+						const [startStr, path] = solution.split(" ");
+						let pos = { x: startStr.charCodeAt(0) - "A".charCodeAt(0), y: Number(startStr[1]) - 1 };
+						ld.backCells[pos.x][pos.y].css("background-color", "rgba(255,0,0,.2)");
+						const pathColor = "gray";
+						for (const d of path) {
+							const posDiff = { "u": { x: 0, y: -1 }, "l": { x: -1, y: 0 }, "r": { x: 1, y: 0 }, "d": { x: 0, y: 1 } }[d];
+							const newPos = { x: pos.x + posDiff.x, y: pos.y + posDiff.y };
+							const drawVertLine = (pos) => {
+								if (pos.x < 6) ld.pathCells[pos.x][pos.y].css("border-left-color", pathColor);
+								if (pos.x > 0) ld.pathCells[pos.x - 1][pos.y].css("border-right-color", pathColor);
+							};
+							const drawHorizLine = (pos) => {
+								if (pos.y < 6) ld.pathCells[pos.x][pos.y].css("border-top-color", pathColor);
+								if (pos.y > 0) ld.pathCells[pos.x][pos.y - 1].css("border-bottom-color", pathColor);
+							};
+							if (d === "u") drawVertLine(newPos);
+							else if (d === "l") drawHorizLine(newPos);
+							else if (d === "r") drawHorizLine(pos);
+							else if (d === "d") drawVertLine(pos);
+							else throw new Error();
+							pos = newPos;
+							ld.backCells[pos.x][pos.y].css("background-color", "rgba(0,0,0,.2)");
+						}
+						ld.backCells[pos.x][pos.y].css("background-color", "rgba(0,0,255,.2)");
+					},
+					onSolutionPressed: () => {
+						if (ld.state === "solution") return;
+						ld.state = "solution";
+						ld.currentMode.text("SOLUTION:");
+						ld.gridModeButton.removeAttr("disabled").css("cursor", "pointer");
+						ld.solutionModeButton.attr("disabled", "disabled").css("cursor", "default");
+						module.methods.renderSolution();
+					},
+					onGridPressed: () => {
+						if (ld.state === "grid") return;
+						ld.state = "grid";
+						ld.currentMode.text("GRID:");
+						ld.gridModeButton.attr("disabled", "disabled").css("cursor", "default");
+						ld.solutionModeButton.removeAttr("disabled").css("cursor", "pointer");
+						module.methods.clearPath();
+					},
+				};
+                linen -= rulesCount;
+                return false;
+            },
+        }, {
+            regex: /Stage #1: (.*)$/,
+            handler: function (matches, module) {
+				const createButton = (parent, text, handler, disabled = false) => {
+					const result = $("<button>").appendTo(parent).text(text);
+					result.css("border", "solid 1px").css("border-radius", "8px").css("padding", "4px 8px").css("user-select", "none");
+					result.click(() => {
+						try {
+							handler();
+						} catch (error) {
+							console.error(error);
+						}
+						return false;
+					});
+					if (disabled) result.attr("disabled", "disabled");
+					else result.css("cursor", "pointer");
+					return result;
+				};
+                const maps = [matches[1].split(";").map((row) => row.split(" "))];
+                const solutions = [readLine().match(/Stage #1 solution: (.*)$/)[1]];
+                for (let i = 1; i < 7; i++) {
+                    maps.push(readLine().match(/: (.*)$/)[1].split(";").map((row) => row.split(" ")));
+                    solutions.push(readLine().match(/: (.*)$/)[1]);
+                }
+                const ld = module.logsData;
+                ld.maps = maps;
+                ld.solutions = solutions;
+                ld.attempts = new Array(7).fill(0).map(() => []);
+                ld.table = $("<div>").css("display", "flex").css("align-items", "center").css("flex-direction", "column").css("border", "solid 2px black");
+                ld.currentStage = 0;
+                ld.topSection = $("<div>").appendTo(ld.table).css("margin-top", "16px");
+				ld.prevStageButton = createButton(ld.topSection, "prev", () => module.methods.onPrevPressed(), true).css("margin-right", "16px");
+                ld.stageTextDiv = $("<span>").appendTo(ld.topSection).text("Stage #1").css("font-size", "24px");
+                ld.nextStageButton = createButton(ld.topSection, "next", () => module.methods.onNextPressed()).css("margin-left", "16px");
+                ld.modeSelector = $("<div>").appendTo(ld.table).css("margin-top", "16px");
+				ld.gridModeButton = createButton(ld.modeSelector, "grid", () => module.methods.onGridPressed(), true);
+				ld.solutionModeButton = createButton(ld.modeSelector, "solution", () => module.methods.onSolutionPressed()).css("margin", "0 16px");
+                ld.attemptsModeButton = createButton(ld.modeSelector, "attempts", () => {}, true);
+                ld.currentMode = $("<div>").appendTo(ld.table).css("margin-top", "16px").css("font-size", "20px").text("GRID:");
+				ld.gridContainer = $("<div>").appendTo(ld.table).css("margin", "16px 0").css("position", "relative").css("width", "max-content");
+                ld.grid = $("<table>").appendTo(ld.gridContainer);
+				ld.gridBack = $("<table>").appendTo(ld.gridContainer).css("position", "absolute").css("top", "0").css("left", "0").css("z-index", "-2");
+                ld.pathGrid = $("<table>").appendTo(ld.gridContainer).css("position", "absolute").css("top", "14px").css("left", "14px").css("z-index", "-1");
+                ld.cells = new Array(7).fill(0).map(() => new Array(7).fill(null));
+                ld.backCells = new Array(7).fill(0).map(() => new Array(7).fill(null));
+				ld.pathCells = new Array(6).fill(0).map(() => new Array(6).fill(null));
+				const createCell = (parent, border) => {
+					// const border = `solid ${isPath ? 4 : 2}px ${isPath ? "rgba(0,0,0,0)" : "lightgray"}`;
+					return $("<td>").appendTo(parent).css("text-align", "center").css("border", border).css("width", "32px").css("height", "32px");
+				};
+                for (let y = 0; y < 7; y++) {
+                    const tr = $("<tr>").appendTo(ld.grid);
+					const backTr = $("<tr>").appendTo(ld.gridBack);
+                    const pathTr = $("<tr>").appendTo(ld.pathGrid);
+                    for (let x = 0; x < 7; x++) {
+                        ld.cells[x][y] = createCell(tr, "solid 2px rgba(0,0,0,0)");
+                        ld.backCells[x][y] = createCell(backTr, "solid 2px lightgray");
+						if (y < 6 && x < 6) ld.pathCells[x][y] = createCell(pathTr, "solid 4px rgba(0,0,0,0)");
+                    }
+                }
+				module.methods.renderStage();
+                module.push({ obj: ld.table });
+                return true;
+            },
+        }, {
+            regex: /^.*$/,
+        }],
+    },
+    {
         displayName: "Updog",
         moduleID: "Updog",
         loggingTag: "Updog",
