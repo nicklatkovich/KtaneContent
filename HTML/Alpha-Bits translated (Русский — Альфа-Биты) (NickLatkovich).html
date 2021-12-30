@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>Альфа-Биты — Keep Talking and Nobody Explodes Module</title>
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/font-cyrillic.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <style>
+        .table-empty {
+            border: none;
+        }
+
+        .cell-empty {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-08">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Альфа-Биты</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/Alpha-Bits.svg" class="diagram">
+                <h2>О Альфа-Битах</h2>
+                <p class="flavour-text">Является частью хорошо сбалансированного завтрака!</p>
+
+                <p>
+                    Этот модуль отображает идентификационный номер, шесть маленьких экранов, содержащих отдельные буквенно-цифровые символы,
+                    и большой экран, которым можно управлять с помощью стрелок вверх и вниз.
+                </p>
+
+                <p>
+                    Для однозначного определения значений двух упорядоченных битов требуется не более трех логических операций.
+                    Каждый маленький экран связан с символом (отображается на экране) и логической операцией (определяется по идентификационному номеру).
+                    Двоичное представление символа на экране представляет преобразованный побитовый результат связанной логической операции,
+                    выполняемой над двумя неизвестными на каждом этапе.
+                </p>
+
+                <p>
+                    Символы, для двоичного представления которых требуется более пяти бит, не появятся на этом модуле.
+                    Числа используют стандартные двоичные представления.
+                    Буквы должны быть преобразованы в base-36 перед преобразованием в двоичную систему;
+                    <strong>A = 01010, B = 01011,</strong> ..., <strong>U = 11110, V = 11111</strong>.
+                </p>
+
+                <h3>Таблицы Истинности</h3>
+                <p>
+                    Ниже представлены таблицы истинности для каждой из 8 побитовых операций, которые могут появиться в этом модуле
+                    (показаны с соответствующими им идентификационными номерами). Два левых столбца - это входные данные по порядку, а правый столбец - это выходные данные.
+                </p>
+
+                <table style="margin: 1em auto;" class = "table-empty">
+                    <tbody>
+                        <tr>
+                            <th colspan = "3">0: OR</th>
+                            <th rowspan = "5" class = "cell-empty"></th>
+                            <th colspan = "3">1: AND</th>
+                            <th rowspan = "5" class = "cell-empty"></th>
+                            <th colspan = "3">2: XOR</th>
+                            <th rowspan = "5" class = "cell-empty"></th>
+                            <th colspan = "3">3: IMP</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table style="margin: 1em auto;" class = "table-empty">
+                    <tbody>
+                        <tr>
+                            <th colspan = "3">4: NOR</th>
+                            <th rowspan = "5" class = "cell-empty"></th>
+                            <th colspan = "3">5: NAND</th>
+                            <th rowspan = "5" class = "cell-empty"></th>
+                            <th colspan = "3">6: XNOR</th>
+                            <th rowspan = "5" class = "cell-empty"></th>
+                            <th colspan = "3">7: IMPBY</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            <div class="page-footer relative-footer">Стр. 1 из 2</div>
+        </div>
+        <div class="page page-bg-08">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Альфа-Биты</span>
+            </div>
+            <div class="page-content">
+                <h3>Решение модуля</h3>
+
+                <p>
+                    Идентификационный номер можно разделить на две тройки чисел; первая тройка связана с левым столбцом <str>сверху вниз</str> и этапом 1,
+                    а вторая связана с правым столбцом <str>сверху вниз</str> и этапом 2. Значение маленького дисплея определяется следующим образом:
+                </p>
+
+                <ul>
+                    <li>Два символа преобразуются в двоичную форму.</li>
+                    <li>
+                        Логическая операция выполняется над первыми битами двух символов, сохраняя их порядок. Результатом этой операции является первый бит нового символа.
+                    </li>
+                    <li>Этот процесс повторяется для второго, третьего, четвертого и пятого битов неизвестных символов, чтобы сформировать новый пятибитовый символ.</li>
+                    <li>Результат преобразуется в символ и отображается на экране.</li>
+                </ul>
+
+                <p>Задача эксперта - определить, какими были исходные два символа для каждого этапа.</p>
+                <p>Если введен неправильный символ, будет засчитана ошибка, а входные данные текущего этапа будут сброшены.</p>
+
+                <p>
+                    Например, пусть экраны на одной стороне будут <strong>(U, NAND)</strong>, <strong>(R, OR)</strong> и <strong>(D, IMP)</strong>.
+                    Рассмотрим <strong>вторые</strong> биты в порядке чтения обоих ответов.
+                    Обратите внимание, что <strong>U = 11110</strong>, <strong>R = 11011</strong> и <strong>D = 01101</strong>.
+                    Из первого экрана известно, что по крайней мере один бит равен нулю, а из второго экрана, что по крайней мере один бит равен 1;
+                    то есть биты равны 0 и 1 в некотором порядке.
+                    Экран три дает (0,1) в качестве правильного порядка битов.
+                    Это можно повторить, чтобы определить, что правильные символы - это <strong>I</strong> и <strong>9</strong>,
+                    представленные <strong>10011</strong> и <strong>01001</strong> соответственно.
+                </p>
+            </div>
+            <div class="page-footer relative-footer">Стр. 2 из 2</div>
+        </div>
+    </div>
+</body>
+</html>

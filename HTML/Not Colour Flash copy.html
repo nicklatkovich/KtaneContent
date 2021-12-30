@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>Не Цветная Вспышка — Keep Talking and Nobody Explodes Module</title>
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/font-cyrillic.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <style>
+        table.hl-cell {
+            font-size: 13px;
+            text-align: center;
+            position: absolute;
+            border-color: rgba(0, 0, 0, 0);
+            border: 0 solid transparent;
+            width: 28.9mm;
+            height: 16.6mm;
+            background-color: white;
+        }
+
+        table.hl-cell tr>td {
+            border-color: rgba(0, 0, 0, 0);
+            border: 0 solid transparent;
+        }
+
+        .dark table,
+        table {
+            border: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="section">
+        <div class="page page-bg-04">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Не Цветная Вспышка</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/Not Colour Flash.svg" class="diagram">
+                <h2>О Не Цветной Вспышке</h2>
+                <p class="flavour-text">Может быть сложно распознать цвет слова, если это слово - другой цвет... Как хорошо, что в этом модуле они на английском.</p>
+                <ul>
+                    <li>Модуль "Не Цветная Вспышка" имеет дисплей, на котором отображается цветное слово и две кнопки с надписью "Yes" и "No".
+                        <ul style="font-size:15px">
+                            <li>Нажатие кнопки "Yes" меняет отображаемое слово по циклической последовательности из шести слов.</li>
+                            <li>Нажатие кнопки "No" меняет цвет отображаемого слова по циклической последовательности из шести цветов.</li>
+                            <li>Зажатие кнопки "Yes" отправляет текущий дисплей в качестве ответа.</li>
+                            <li>Зажатие кнопки "No" сбрасывает дисплей.</li>
+                        </ul>
+                    </li>
+                    <li>Переведите полученные цвета в английские эквиваленты:
+                        <ul>
+                            <li>Красный - Red</li>
+                            <li>Зеленый - Green</li>
+                            <li>Синий - Blue</li>
+                            <li>Пурпурный - Magenta</li>
+                            <li>Желтый - Yellow</li>
+                            <li>Белый - White</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Используйте следующие пары символов серийного номера в таблице ниже, чтобы найти,
+                        какие записи нужно поменять местами в каждой последовательности для получения <em>преобразованных последовательностей</em>:
+                        <ul style="font-size:15px">
+                            <li>Слова - Используйте 1-й и 2-й, затем 3-й и 4-й, затем 5-й и 6-й.</li>
+                            <li>Цвета - Используйте 1-й и 4-й, затем 2-й и 5-й, затем 3-й и 6-й.</li>
+                        </ul>
+                    </li>
+                    <li>Используйте приведенную ниже блок-схему, чтобы выбрать правильный дисплей для отправки:
+                        <ul style="font-size:15px">
+                            <li>Каждая ячейка на блок-схеме ниже имеет определенную пару цветов.</li>
+                            <li>
+                                Начальная ячейка определяется начальным состоянием дисплея -<br>
+                                Если количество портов и портовых плит имеют одинаковую четность,<br>
+                                то верхняя часть соответствует цвету, а нижняя - слову.<br>
+                                В противном случае верхняя часть соответствует слову, а нижняя часть соответствует цвету.
+                            </li>
+                            <li>
+                                В блок-схеме используются следующие обозначения:
+                                <ul>
+                                    <li>R, G, B, M, Y, W - цвета</li>
+                                    <li>ВП - все последовательности</li>
+                                    <li>ЛП - любая последовательность</li>
+                                    <li>ПЦ (ЛПЦ) - последовательности цветов</li>
+                                    <li>ПС (ЛПС) - последовательности слов</li>
+                                    <li>НП (НПЦ/НПС/ЛНП) - начальные последовательности</li>
+                                    <li>ПП (ППЦ/ППС/ЛПП) - преобразованные последовательности</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Следуйте блок-схеме -<br>
+                                В каждой ячейке написано утверждение о четырех последовательностях.<br>
+                                Если утверждение верно, перейдите к следующей ячейке по черной стрелке. В противном случае следуйте серой стрелке.<br>
+                                Остановитесь на двенадцатой ячейке, которую нужно посетить, или на первой ячейке, которую нужно посетить дважды.
+                            </li>
+                            <li>
+                                Правильный дисплей определяется последней ячейкой -<br>
+                                Если количество элементов питания кратно трем,<br>
+                                цвет соответствует верхнему, а слово соответствует нижнему.<br>
+                                В противном случае слово соответствует верхнему, а цвет соответствует нижнему.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-footer relative-footer">Стр. 1 из 4</div>
+        </div>
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Не Цветная Вспышка</span>
+            </div>
+            <div class="page-content">
+                <p style="font-size:15px">
+                    Используйте первое значение в паре как строку, второе как столбец. Буква в таблице относится к цвету, а цифра - к позиции в последовательности.
+                </p>
+                <table style="margin:auto; font-size:13px; width:100%">
+                    <tr>
+                        <th class='corner'></th>
+                        <th>A,J,S,1</th>
+                        <th>B,K,T,2</th>
+                        <th>C,L,U,3</th>
+                        <th>D,M,V,4</th>
+                        <th>E,N,W,5</th>
+                        <th>F,O,X,6</th>
+                        <th>G,P,Y,7</th>
+                        <th>H,Q,Z,8</th>
+                        <th>I,R,0,9</th>
+                    </tr>
+                    <tr>
+                        <th>A<br>B<br>C<br>D</th>
+                        <th>5/B</th>
+                        <th>B/R</th>
+                        <th>M/G</th>
+                        <th>4/1</th>
+                        <th>R/W</th>
+                        <th>6/4</th>
+                        <th>2/3</th>
+                        <th>3/M</th>
+                        <th>6/Y</th>
+                    </tr>
+                    <tr>
+                        <th>E<br>F<br>G<br>H</th>
+                        <th>5/6</th>
+                        <th>6/3</th>
+                        <th>1/4</th>
+                        <th>R/Y</th>
+                        <th>2/M</th>
+                        <th>W/R</th>
+                        <th>Y/W</th>
+                        <th>3/B</th>
+                        <th>G/1</th>
+                    </tr>
+                    <tr>
+                        <th>I<br>J<br>K<br>L</th>
+                        <th>3/5</th>
+                        <th>B/2</th>
+                        <th>G/4</th>
+                        <th>5/R</th>
+                        <th>W/5</th>
+                        <th>R/G</th>
+                        <th>4/6</th>
+                        <th>1/2</th>
+                        <th>W/6</th>
+                    </tr>
+                    <tr>
+                        <th>M<br>N<br>O<br>P</th>
+                        <th>5/M</th>
+                        <th>3/B</th>
+                        <th>6/G</th>
+                        <th>4/B</th>
+                        <th>1/3</th>
+                        <th>2/M</th>
+                        <th>3/5</th>
+                        <th>4/R</th>
+                        <th>5/G</th>
+                    </tr>
+                    <tr>
+                        <th>Q<br>R<br>S<br>T</th>
+                        <th>2/G</th>
+                        <th>2/6</th>
+                        <th>5/1</th>
+                        <th>4/M</th>
+                        <th>5/6</th>
+                        <th>4/3</th>
+                        <th>B/M</th>
+                        <th>2/W</th>
+                        <th>R/G</th>
+                    </tr>
+                    <tr>
+                        <th>U<br>V<br>W<br>X</th>
+                        <th>6/3</th>
+                        <th>1/4</th>
+                        <th>R/3</th>
+                        <th>6/4</th>
+                        <th>M/5</th>
+                        <th>G/1</th>
+                        <th>5/3</th>
+                        <th>1/R</th>
+                        <th>3/4</th>
+                    </tr>
+                    <tr>
+                        <th>Y<br>Z<br>0<br>1</th>
+                        <th>1/Y</th>
+                        <th>3/Y</th>
+                        <th>M/1</th>
+                        <th>6/G</th>
+                        <th>B/W</th>
+                        <th>4/1</th>
+                        <th>3/M</th>
+                        <th>3/2</th>
+                        <th>B/5</th>
+                    </tr>
+                    <tr>
+                        <th>2<br>3<br>4<br>5</th>
+                        <th>4/Y</th>
+                        <th>1/2</th>
+                        <th>4/R</th>
+                        <th>Y/W</th>
+                        <th>2/4</th>
+                        <th>3/Y</th>
+                        <th>6/R</th>
+                        <th>4/G</th>
+                        <th>5/1</th>
+                    </tr>
+                    <tr>
+                        <th>6<br>7<br>8<br>9</th>
+                        <th>3/1</th>
+                        <th>2/B</th>
+                        <th>5/W</th>
+                        <th>R/B</th>
+                        <th>Y/2</th>
+                        <th>M/2</th>
+                        <th>1/4</th>
+                        <th>2/R</th>
+                        <th>4/W</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Стр. 2 из 4</div>
+        </div>
+        <div class="page page-bg-06">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Не Цветная Вспышка</span>
+            </div>
+            <div class="page-content">
+                <table class="hl-cell" style="margin-top: 12.5mm; margin-left: 25.4mm">
+                    <tr>
+                        <td>11</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 13.2mm; margin-left: 83.5mm">
+                    <tr>
+                        <td>12</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 13.7mm; margin-left: 141.2mm">
+                    <tr>
+                        <td>Y ровно в 2-х позициях</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 52.9mm; margin-left: 46.8mm">
+                    <tr>
+                        <td>ЛП: позиция W равна позиции Y в НПЦ</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 53.5mm; margin-left: 96.3mm">
+                    <tr>
+                        <td>ПП: четность позиции W не менялась</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 62.7mm; margin-left: 155.3mm">
+                    <tr>
+                        <td>НПЦ: R, B или Y на 6-й позиции</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 87.4mm; margin-left: 72.2mm">
+                    <tr>
+                        <td>ВП: G на неч. позиции ровно дважды</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 87.9mm; margin-left: 119mm">
+                    <tr>
+                        <td>ЛП: R 1-й</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 107.5mm; margin-left: 26.1mm">
+                    <tr>
+                        <td>ЛПП: позиция B противоположна позиции Y</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 128.9mm; margin-left: 71.7mm">
+                    <tr>
+                        <td>ВП: B не 3-й</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 129.4mm; margin-left: 118.4mm">
+                    <tr>
+                        <td>ЛП: R, G и B в этом порядке</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 152.2mm; margin-left: 26.4mm">
+                    <tr>
+                        <td>ЛП: M на 2-й позиции</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 152.2mm; margin-left: 154.2mm">
+                    <tr>
+                        <td>НПС: R, G или B на 6-й позиции</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 171.1mm; margin-left: 71.7mm">
+                    <tr>
+                        <td>ПС: позиция R совпадает</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 188.4mm; margin-left: 26.4mm">
+                    <tr>
+                        <td>ППЦ: M на 3-й или 4-й позиции</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 187.8mm; margin-left: 116.4mm">
+                    <tr>
+                        <td>ВП: W НЕ на 2-й позиции</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 210.7mm; margin-left: 69.4mm">
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 211.5mm; margin-left: 153mm">
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                </table>
+                <img src="img/Not Colour Flash/flow.svg" style="margin-left:39px; width:105%">
+            </div>
+            <div class="page-footer relative-footer">Page 3 of 4</div>
+        </div>
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Not Colour Flash</span>
+            </div>
+            <div class="page-content">
+                <table class="hl-cell" style="margin-top: 12mm; margin-left: -4.7mm">
+                    <tr>
+                        <td>3</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 12.5mm; margin-left: 58.5mm">
+                    <tr>
+                        <td>4</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 43mm; margin-left: 27mm">
+                    <tr>
+                        <td>5</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 39mm; margin-left: 98mm">
+                    <tr>
+                        <td>6</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 87.3mm; margin-left: 30.2mm">
+                    <tr>
+                        <td>ППС: G после Y</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 71mm; margin-left: 69.2mm">
+                    <tr>
+                        <td>8</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 71mm; margin-left: 121.5mm">
+                    <tr>
+                        <td>9</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 111.5mm; margin-left: -5.7mm">
+                    <tr>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 111.2mm; margin-left: 68mm">
+                    <tr>
+                        <td>11</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 111.2mm; margin-left: 119.8mm">
+                    <tr>
+                        <td>12</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 141.5mm; margin-left: 30.5mm">
+                    <tr>
+                        <td>13</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 144.5mm; margin-left: 93.5mm">
+                    <tr>
+                        <td>14</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 173.8mm; margin-left: -5.7mm">
+                    <tr>
+                        <td>15</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 174.5mm; margin-left: 58.5mm">
+                    <tr>
+                        <td>16</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 175mm; margin-left: 124mm">
+                    <tr>
+                        <td>ППЦ: M 4-й или 5-й</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 209mm; margin-left: -6.2mm">
+                    <tr>
+                        <td>18</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 209.5mm; margin-left: 43.5mm">
+                    <tr>
+                        <td>19</td>
+                    </tr>
+                </table>
+                <table class="hl-cell" style="margin-top: 209.5mm; margin-left: 93.5mm">
+                    <tr>
+                        <td>20</td>
+                    </tr>
+                </table>
+                <img src="img/Not Colour Flash/chart.svg" style="margin-left:-73px; width:105.5%">
+            </div>
+            <div class="page-footer relative-footer">Page 4 of 4</div>
+        </div>
+    </div>
+</body>
+
+</html>

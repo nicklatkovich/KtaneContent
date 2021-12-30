@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>RGB Гиперлабиринт — Keep Talking and Nobody Explodes Module</title>
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/font-cyrillic.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <style>
+        p {
+            font-size: 15px;
+        }
+
+        table {
+            float: right;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section">
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">RGB Гиперлабиринт</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/RGB Hypermaze.svg" class="diagram">
+                <h2>О RGB Гиперлабиринте</h2>
+                <p class="flavour-text">У меня есть отличная идея для модуля! Он называется Забудь..... Ультра..... Магазины..... Саймон.....  Гипер... Лабиринт!</p>
+                <p>
+                    На модуле расположен вращающийся гиперкуб и дисплей. Запишите последовательность пяти 4D вращений гиперкуба.
+                    Конец последовательности определяется по небольшой паузе.
+                </p>
+                <p>
+                    Когда вы получите последовательность всех пяти вращений нажмите на дисплей.
+                    Каждая вершина гиперкуба сменится на один из восьми цветов (черный, красный, зеленый, синий, голубой, пурпурный, желтый, белый)
+                    и каждое ребро сменится на один из трех основных цветов (красный, зеленый, синий).
+                </p>
+                <table>
+                    <tr>
+                        <th>Ребро</th>
+                        <th>Операция</th>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>AND</td>
+                    </tr>
+                    <tr>
+                        <td>Y</td>
+                        <td>OR</td>
+                    </tr>
+                    <tr>
+                        <td>Z</td>
+                        <td>NAND</td>
+                    </tr>
+                    <tr>
+                        <td>W</td>
+                        <td>NOR</td>
+                    </tr>
+                </table>
+                <p>
+                    Примените бинарные операции основываясь на операторе ребра, получаемого из таблицы справа, и значений цветовых каналов смежных вершин ребра,
+                    которые соответствуют цвету самого ребра.
+                    <strong><em>Если результат бинарной операции - истина, то ребро является стеной.</em></strong> В противном случае это ребро проходимо.
+                </p>
+                <p>
+                    Снова нажмите дисплей, чтобы переключиться между цветным кубом и кубом ввода. Вы можете вернуться к цветному кубу в любой момент, снова нажав на дисплей.
+                    Куб ввода не будет окрашен, за исключением зеленой вершины, представляющей позицию цели, и красной вершины, представляющей ваше текущее положение.
+                </p>
+                <p>
+                    Стены <em>лабиринта цветного куба</em> должны быть повернуты в порядке, показанном на дисплее (слева направо), чтобы получить лабиринт куба-ввода,
+                    при этом цифра "1" на дисплее относится к первому вращению, "2" - ко второму, и т. д. из последовательности, полученной в начале.
+                    Переместите красную вершину к зеленой вершине, нажимая соседние вершины на проходимых ребрах.
+                    Попытка пересечь "ребро-стену" приведет к получению ошибки и сбросу модуля на этап вращения.
+                    Вращение и дисплей останутся без изменений. Как только красная вершина достигнет зеленой вершины, модуль будет решен.
+                </p>
+                <p>Примечание: положительная ось Y указывает в сторону от модуля.</p>
+                <img style='width: 100%' src="img/RGB Hypermaze/hypercubeAxes.png" />
+            </div>
+            <div class="page-footer relative-footer">Page 1 of 2</div>
+        </div>
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">RGB Hypermaze</span>
+            </div>
+            <div class="page-content">
+                <h3>Пример Расчетов</h3>
+
+                <p style="font-size:15px; margin-bottom: 9em;">
+                    Ребро: красное zag-back-top<br>
+                    Вершины: синяя zag-back-top-left и желтая zag-back-top-right<br>
+                    Операция: AND (так как ребро паралельно оси X)<br>
+                    Входы: 0 и 1 (синий не содержит красный, 0; желтый содержит красный, 1)<br>
+                    0 AND 1 = ложь; Поэтому в лабиринте цветного куба на вершине zag-back-top нет стены.
+                </p>
+                <img style='width: 100%' src="img/RGB Hypermaze/RGB_ColorMix.jpg" />
+            </div>
+            <div class="page-footer relative-footer">Page 2 of 2</div>
+        </div>
+    </div>
+</body>
+
+</html>
